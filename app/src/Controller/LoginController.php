@@ -35,36 +35,6 @@ class LoginController extends AbstractController
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
-
-     #[Route(path: '/reinitialisation', name:'app_reset_password')]
-     public  function  resetPassword(Request $request,UsersRepository $usersRepository): Response
-     {
-         $form = $this->createForm(ResetpasswordForm::class);
-         $form->handleRequest($request);
-         if ($form->isSubmitted() && $form->isValid()) {
-             $user = $usersRepository->findOneBy(['email' => $form->get('email')->getData()]);
-             if ($user) {
-
-             }
-             
-         }
-
-
-         return $this->render('login/reset_password.html.twig', [
-             'ResetpasswordForm' => $form->createView(),
-
-
-         ]);
-
-     }
-
-
-
-
-
-
-
-
-
-
 }
+
+
