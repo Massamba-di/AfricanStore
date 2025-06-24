@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrderController!{% endblock %}
+
+{% block body %}
+    <header>
+        {{include('/partials/nav.html.twig')}}
+
+    </header>
+    <main>
+    <form action="{{ path('app_order') }}" method="POST" id="order-form" class="order">
+        {# ... autres champs du formulaire ... #}
+
+        <input type="hidden" name="panier_json" id="panier_json" />
+
+
+
+
+
+<h1>Choisissez une adresse de livraison</h1>
+
+{% if adresses is not empty %}
+    {% for adresse in adresses %}
+        <div>
+            <input type="radio" name="adresse_id" value="{{ adresse.id }}" required>
+            <label>
+                {{ adresse.adressNumber }} {{ adresse.street }}, {{ adresse.postal }} {{ adresse.city }}
+            </label>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div>
+    <input type="radio" name="adresse_id" value="new" id="newAdresse" required>
+    <label for="newAdresse">
+        <a href="{{ path('app_adresse_new') }}">Ajouter une nouvelle adresse</a>
+    </label>
+</div>
+
+
+
+
+
+    <h2>Mode de livraison</h2>
+      <div>
+          <input type="radio" name="delivery_mode" value="standard" id="standard" checked>
+            <label for="standard">Livraison Standard (gratuite)</label>
+      </div>
+    <div>
+        <input type="radio" name="delivery_mode"  id="mode" value="express">
+        <label for="mode">Livraison Express (5 €)</label>
+    </div>
+
+
+
+     <button type="submit">valider</button>
+</form>
+
+
+</main>
+
+
+
+{% endblock %}
+{% block javascripts %}
+
+    <script src="{{ asset('js/order.js') }}"defer></script>
+{% endblock %}

@@ -1,0 +1,172 @@
+header {
+    box-shadow: 0 5px 5px lightgrey;
+    margin-bottom: 15px;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+    }
+
+    .open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30%;
+
+        height: 100vh;
+        background-color:lightgray;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+
+        @media screen and (min-width: 1024px) {
+
+
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+           position: absolute;
+            top: 0;
+            left:50%;
+            height: auto;
+            background-color: white;
+          
+            
+
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    }
+
+
+
+
+    .open.active {
+        display: flex;
+
+    }
+
+    a {
+        color: white;
+        list-style: none;
+    }
+
+
+    .open li {
+        margin: 20px 0;
+        font-size: 24px;
+        list-style: none;
+    }
+
+    /* Bouton burger */
+    .burger {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+
+        @media screen and (min-width: 1024px) {
+
+            display: none
+        }
+    }
+
+
+    .close-menu {
+
+        font-size: 30px;
+        color: #000;
+        margin-top: 30px;
+    }
+
+
+
+    img {
+        width: 60px;
+        height: auto;
+    }
+}
+
+
+footer {
+    position: relative;
+
+
+
+    .nav-end {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 15px 0;
+        z-index: 100;
+    }
+
+    .nav-end a svg {
+        fill: white;
+        /* rend les icônes blanches */
+        transition: transform 0.2s;
+    }
+
+    .nav-end a:hover svg {
+        transform: scale(1.2);
+        /* petit effet au survol */
+
+
+    }
+
+    p {
+        background-color: black;
+        color: white;
+        text-align: center;
+        display: none;
+
+
+    }
+}
+
+@media screen and (min-width: 768px) {
+    footer {
+        .nav-end {
+            display: none;
+        }
+
+        p {
+            display: block;
+            font-size: 1.5rem;
+        }
+    }
+
+}
+
+
+/*
+@media screen and (min-width: 1024px) {
+
+
+    .open {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .burger {
+        display: none
+    }
+
+
+
+}*/

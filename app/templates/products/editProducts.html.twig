@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ <header>
+  {{include('/partials/nav.html.twig')}}
+ </header>
+ <main>
+  <h1>modifier  produits</h1>
+  {{ form_start(form, { attr: { class: 'formulaire' } }) }}
+  <div>
+      {{ form_row(form.name) }}
+  </div>
+
+  <div>
+      {{ form_row(form.description) }}
+  </div>
+
+  <div>
+      {{ form_row(form.price) }}
+
+  </div>
+
+  <div>
+      {{ form_row(form.pictures) }}
+  </div>
+
+  <div>
+    {{ form_row(form.categories) }}
+  </div>
+   {{ form_end(form) }}
+ </main>
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CartController!{% endblock %}
+
+{% block body %}
+<header>
+{{include('/partials/nav.html.twig')}}
+</header>
+<main>
+
+    <div id="panier-container"></div>
+
+
+<template id="produit-template">
+    <div class="produit-panier">
+        <img class="img-produit" />
+        <div>
+         <h3 class="nom-produit"></h3>
+        <p class="taille-produit"></p>
+        <p class="prix-produit"></p>
+        <input type="number" class="quantite-input" min="1" value="1" />
+        <p class="total-produit"></p>
+        <button class="btn-supprimer">Supprimer</button>
+        </div>
+       
+    </div>
+</template>
+<div id="panier-footer">
+    <p id="totalGeneral">Total : 0€</p>
+    <button class="btn" id="commander-btn"  data-order-url="{{ path('app_order') }}">Commander</button>
+    </div>
+</main>
+<footer>
+
+</footer>
+   
+{% endblock %}
+{% block javascripts %}
+   
+    <script src="{{ asset('js/carts.js') }}"defer></script>
+{% endblock %}
+

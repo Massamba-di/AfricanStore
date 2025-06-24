@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'acceuil{% endblock %}
+
+{% block body %}
+<header>
+{{include('/partials/nav.html.twig')}}
+
+</header>
+
+
+
+<main>
+  <section class="first">
+    <img src="{{ asset('image/img logo 2.png') }}" alt="image de bienvenue">
+  </section>
+
+  <div>
+    <section class="second">
+      <article>
+        <a href="{{ path('app_products') }}">
+
+          <img src="{{ asset('image/costume 1.jpg') }}" alt="costume Africain">
+        </a>
+      </article>
+      <article>
+    <a href="{{ path('app_products') }}">
+
+          <img src="{{ asset('image/chaussure (3).png') }}" alt="Chaussures">
+        </a>
+      </article>
+      <article>
+        <a href="{{ path('app_products') }}">
+
+          <img src="{{ asset('image/costume 2.jpg') }}" alt="Costume Africain">
+        </a>
+      </article>
+      <article>
+        <a href="{{ path('app_products') }}">
+
+          <img src="{{ asset('image/chaussure (6).png') }}" alt="chaussure">
+        </a>
+      </article>
+      <article>
+       <a href="{{ path('app_products') }}">
+
+          <img src="{{ asset('image/costume 6.webp') }}" alt="costume Africain">
+        </a>
+      </article>
+      <article>
+       <a href="{{ path('app_products') }}">
+          <img src="{{ asset('image/chaussure (4).png') }}" alt="chaussure">
+        </a>
+      </article>
+    </section>
+  </div>
+
+  <section class="third">
+    <p>
+      Bienvenue sur <strong>African Style</strong>, la plateforme e-commerce qui célèbre la richesse
+      et l'élégance de la mode africaine. Nous regroupons les plus grandes boutiques dans la vente de
+      costumes et chaussures africaines, alliant tradition, modernité et artisanat de qualité.
+    </p>
+    <ul>
+      <li><strong>Des costumes africains raffinés :</strong> Pour une cérémonie, un événement spécial ou un style quotidien.</li>
+      <li><strong>Des chaussures uniques :</strong> Fabriquées avec soin, mêlant matériaux de qualité et design authentique.</li>
+    </ul>
+  </section>
+</main>
+<footer>
+{{include('partials/footer.html.twig')}}
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,286 @@
+:root {
+    --font-size: 14px;
+    --primary: lightgrey;
+
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    margin-inline: 20px;
+
+    /*page d'acceuil*/
+}
+
+.first {
+    margin-block: 10px;
+
+    img {
+
+        border-radius: 15px 15px;
+        box-shadow: 0 5px 5px lightgrey;
+    }
+
+}
+
+.second {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+
+    img {
+
+
+        border-radius: 15px 15px;
+        box-shadow: 0 5px 5px lightgrey;
+        margin-bottom: 15px;
+    }
+}
+
+.third {
+    text-align: center;
+    border-radius: 15px 15px;
+    box-shadow: 0 5px 5px lightgrey;
+    padding: 1.6rem;
+    margin-bottom: 10px;
+
+}
+
+/*Page produit*/
+
+.sect1,
+.sect2 {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+}
+
+.chaussure,
+.costume {
+    figure {
+        border-radius: 15px 15px;
+        box-shadow: 0 5px 5px lightgrey;
+        margin-block: 15px;
+
+        img {
+
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        figcaption {
+            padding: 20px;
+        }
+    }
+}
+
+/*page description*/
+.description {
+
+    border-radius: 10px 10px;
+    box-shadow: 0 5px 5px lightgrey;
+    margin-block: 15px;
+
+    img {
+
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    figcaption {
+        padding: 20px;
+    }
+}
+
+.taille {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 15px;
+}
+
+.btnAjout {
+    padding: 5px;
+    border-radius: 2px 2px;
+}
+
+/*panier*/
+#panier-container {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 10px;
+
+    img {
+        box-shadow: 0 5px 5px lightgrey;
+        border-radius: 10px;
+        margin-bottom: 5px;
+    }
+
+    .btn-supprimer {
+        margin-block: 5px;
+        border-radius: 2px 2px;
+        padding: 2px;
+    }
+
+    .produit-panier {
+        width: 40%;
+
+    }
+
+}
+
+#panier-footer {
+
+    text-align: center;
+    padding-bottom: 15px;
+
+    #commander-btn {
+        padding: 10px;
+        border-radius: 2px 2px;
+        margin-top: 5px;
+
+    }
+}
+/*formulaire*/
+.formulaire {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+   .formulaire  div {
+            margin-bottom: 20px;
+         width: 75%;
+         margin:auto;
+   }
+
+          .formulaire input:not([type=checkbox])
+                  {
+                     width: 100%;
+                     margin-bottom: 10px;
+                     padding: 10px;
+                     border: 1px solid lightgrey;
+                     border-radius: 5px;
+
+
+                     }
+
+
+ .formulaire button{
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+h1,h2{
+    text-align: center;
+}
+/*page order*/
+.order{
+    text-align: center;
+     box-shadow: 0 5px 5px lightgrey;
+    padding: 20px;
+    border-radius: 10px;
+    a{
+        text-decoration: none;
+        color:black;
+    }
+}
+.order h1,h2{
+    margin-block: 10px;
+
+}
+.order input{
+    margin-block: 15px;
+}
+.order button{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+
+    /*page d'acceuil*/
+    .second {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+
+    }
+
+    /*page produit*/
+    .chaussure,
+    .costume {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+
+    }
+
+    /*page description*/
+    .description {
+        display: flex;
+        gap: 10px;
+        box-shadow: none;
+
+        img {
+            box-shadow: 0 5px 5px lightgrey;
+            border-radius: 10px;
+        }
+
+    }
+
+    /*page panier*/
+    .produit-panier {
+        width: 40%;
+
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+
+        img {
+            width: 30%;
+
+
+        }
+    }
+
+    .taille {
+        justify-content: space-around;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .second {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+
+    .chaussure,
+    .costume {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 10px;
+
+    }
+
+
+}

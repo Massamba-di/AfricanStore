@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}compte{% endblock %}
+
+{% block body %}
+      <h1>Bienvenue, {{ user.firstName }} {{ user.lastName }}</h1>
+        <p>Email : {{ user.email }}</p>
+
+{% endblock %}

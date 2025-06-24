@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DescriptionsController!
+{% endblock %}
+
+{% block body %}
+	<header>
+		{{include('/partials/nav.html.twig')}}
+	</header>
+	<main>
+		<section class="sect1">
+        <h1>Description du produit</h1>
+            <div class="description">
+            <figure class="description">
+            <img id="image-produit" src="" alt="">
+            <figcaption>
+                <h2 id="nom-produit"></h2>
+                <p><span id="prix-produit">--</span></p>
+                  <p id="description-produit"></p>
+                
+            </figcaption>
+        </figure>
+        <p id="description-produit"></p>
+            </div>
+        
+    </section>
+
+    <section class="sect2">
+        <form id="formPanier">
+            <div class="taille">
+                <div>
+                    <label for="S">S</label>
+                    <input type="radio" id="S" name="taille">
+                </div>
+                <div>
+                    <label for="M">M</label>
+                    <input type="radio" id="M" name="taille">
+                </div>
+                <div>
+                    <label for="L">L</label>
+                    <input type="radio" id="L" name="taille">
+                </div>
+                <div>
+                    <label for="XL">XL</label>
+                    <input type="radio" id="XL" name="taille">
+                </div>
+            </div>
+
+           <!-- Dans le fichier .twig -->
+<button class="btnAjout" data-cart-url="{{ path('app_cart') }}">Ajouter au panier</button>
+
+        </form>
+    </section>.
+			</main>
+		{% endblock %}
+		{% block javascripts %}
+
+			<script src="{{ asset('js/description.js') }}" defer></script>
+      
+		{% endblock %}
