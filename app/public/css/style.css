@@ -29,13 +29,34 @@ main {
 .first {
     margin-block: 10px;
 
+
     img {
 
         border-radius: 15px 15px;
         box-shadow: 0 5px 5px lightgrey;
+        object-fit: cover;
     }
 
 }
+.first ul{
+    list-style: none;
+    display: flex;
+    gap:2px;
+    justify-content: flex-end;
+    margin-block:20px;
+    padding: 0;
+
+    a{
+        text-decoration: none;
+        margin-block:10px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        padding: 10px;
+        color: black;
+        box-shadow: 0 5px 5px lightgrey;
+    }
+}
+
 
 .second {
     text-align: center;

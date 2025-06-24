@@ -12,7 +12,13 @@
 
 <main>
   <section class="first">
-    <img src="{{ asset('image/img logo 2.png') }}" alt="image de bienvenue">
+    <ul>
+      <li><a href="{{path('app_register')}}">inscription</a></li>
+      <li><a href="{{path('app_login')}}">déconnexion</a></li>
+    </ul>
+    <img src="{{ asset('image/welcome to africa.png') }}" alt="image de bienvenue">
+
+
   </section>
 
   <div>
@@ -58,7 +64,7 @@
   <section class="third">
     <p>
       Bienvenue sur <strong>African Style</strong>, la plateforme e-commerce qui célèbre la richesse
-      et l'élégance de la mode africaine. Nous regroupons les plus grandes boutiques dans la vente de
+      et l'élégance de la mode africaine. Nous regroupons les produits artisanats dans la vente de
       costumes et chaussures africaines, alliant tradition, modernité et artisanat de qualité.
     </p>
     <ul>
