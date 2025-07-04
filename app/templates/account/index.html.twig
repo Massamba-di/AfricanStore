@@ -3,7 +3,74 @@
 {% block title %}compte{% endblock %}
 
 {% block body %}
-      <h1>Bienvenue, {{ user.firstName }} {{ user.lastName }}</h1>
-        <p>Email : {{ user.email }}</p>
+    <header>
+        {{include('/partials/nav.html.twig')}}
+
+    </header>
+    <main>
+        <div class="avatarContainer">
+            <img src="{{ asset(user.avatar|default('image/avatar default-1.webp')) }}" alt="avatar" width="15" height="auto"  class="avatar">
+        </div>
+
+            <details>
+
+        <summary> informations personnelles</summary>
+       <p><strong>Nom:</strong>{{ user.lastName }}</p>
+      <p><strong>Prenom :</strong>{{ user.firstName }} </p>
+        <p><strong>Email:</strong>{{ user.email }}</p>
+                {% for adresse in app.user.adresses %}
+        <p><strong>Numéro :</strong> {{ adresse.adressNumber }}</p>
+        <p><strong>Rue :</strong> {{ adresse.street }}</p>
+        <p><strong>Ville :</strong> {{ adresse.city }}</p>
+        <p><strong>Code postal :</strong> {{ adresse.postal }}</p>
+                {% endfor %}
+            </details>
+
+
+            <details>
+                <summary> Mes commandes</summary>
+
+
+                {% for command in app.user.commands %}
+
+                <p><strong>Status:</strong> {{ command.status }}</p>
+                    <p><strong>date de commande :</strong> {{ command.orderDate|date('d/m/Y H:i') }}</p>
+                    <p><strong>Prix total :</strong> {{ command.totalPrice }}€</p>
+                {% endfor %}
+
+
+            </details>
+
+
+            <details>
+                <summary> Nous contacter</summary>
+                {{ form_start(form, { attr: { class: 'formulaire' } }) }}
+                <div>
+                    {{ form_row(form.name)}}
+                </div>
+                <div>
+                    {{ form_row(form.email) }}
+                </div>
+                <div>
+                    {{ form_row(form.subject) }}
+                </div> <div>
+                    {{ form_row(form.message) }}
+
+                </div>
+                <div>
+                    {{ form_widget(form.agreeTerms) }}
+                    {{ form_label(form.agreeTerms) }}
+                </div>
+
+                {{ form_end(form) }}
+
+            </details>
+        <div  class="logout">
+            <a href="{{ path ('app_logout') }}">deconnexion</a>
+        </div>
+
+
+
+    </main>
 
 {% endblock %}

@@ -8,10 +8,13 @@
 
     </header>
     <main>
-    <form action="{{ path('app_order') }}" method="POST" id="order-form" class="order">
-        {# ... autres champs du formulaire ... #}
+  <form id="form-commande" method="POST" action="{{ path('app_order_confirm') }}" class="order">
+      <input type="hidden" name="panier" id="panier-hidden-input">
 
-        <input type="hidden" name="panier_json" id="panier_json" />
+      {# Tu peux aussi ajouter des champs cachés pour l'adresse et la livraison si besoin #}
+
+
+
 
 
 

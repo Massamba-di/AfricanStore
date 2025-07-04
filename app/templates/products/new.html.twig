@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Products{% endblock %}
+
+{% block body %}
+    <header>
+        {{include('/partials/nav.html.twig')}}
+
+    </header>
+
+
+    <h1>Ajouter produit</h1>
+
+    {{ form_start(form,c}) }}
+    <div>
+        {{ form_row(form.name) }}
+    </div>
+    <div>
+        {{ form_row(form.description) }}
+    </div>
+    <div>
+        {{ form_row(form.price) }}
+    </div>
+    <div>
+        {{ form_row(form.stock) }}
+    </div>
+
+    <div>
+        {{ form_row(form.size) }}
+    </div>
+    {{ form_end(form) }}
+    <a href="{{ path('app_products_index') }}">back to list</a>
+{% endblock %}

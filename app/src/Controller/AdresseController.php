@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Adresse;
+use App\Entity\Commands;
 use App\Form\AdresseForm;
 use App\Repository\AdresseRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,15 +27,18 @@ final class AdresseController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $adresse = new Adresse();
+
         $form = $this->createForm(AdresseForm::class, $adresse);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
              $adresse->setUsers($this->getUser());
+
             $entityManager->persist($adresse);
+
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_adresse_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_adresse_index', ['id'=>$adresse->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('adresse/new.html.twig', [

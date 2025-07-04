@@ -1,5 +1,6 @@
-let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
+let panier = JSON.parse(localStorage.getItem("panier")) || [];
+console.log(panier);
 function afficherPanier() {
     const panierContainer = document.querySelector("#panier-container");
     const totalGeneralElement = document.querySelector("#totalGeneral");
@@ -18,7 +19,7 @@ function afficherPanier() {
     panier.forEach((produit, index) => {
         const clone = template.content.cloneNode(true);
 
-        const prixNumber = parseFloat(produit.prix.replace(/[^\d,.-]/g, '').replace(',', '.')) || 0;
+        const prixNumber = parseFloat(produit.prix);
         const totalProduit = prixNumber * produit.quantite;
         totalGeneral += totalProduit;
 
@@ -73,10 +74,10 @@ function ajouterEcouteursEvenements() {
             const confirmation = confirm("Voulez-vous vraiment passer à la commande ?");
             if (confirmation) {
                 alert("Commande validée !");
-                const panier = JSON.parse(localStorage.getItem("panier")) || [];
+                
 
-                        // Par exemple, tu peux enregistrer ce panier dans localStorage sous une autre clé
-                        localStorage.setItem("commande_en_cours", JSON.stringify(panier));
+
+
                 const url = this.dataset.orderUrl;
                          console.log("Redirection vers :", url);
                          window.location.href = url;
@@ -86,4 +87,4 @@ function ajouterEcouteursEvenements() {
     
 }
 
-document.addEventListener("DOMContentLoaded", afficherPanier);
+afficherPanier();

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement Annulé{% endblock %}
+
+{% block body %}
+    <header>
+        {{include('/partials/nav.html.twig')}}
+
+    </header>
+    <main>
+        <div  class="payment">
+        <h1>Paiement annulé</h1>
+        <p>Vous avez annulé votre paiement. Votre commande n'a pas été prise en compte.</p>
+        <a href="{{ path('app_cart') }}">Retour au panier</a>
+        <a href="{{ path('app_home') }}">Retour à l'accueil</a>
+        </div>
+    </main>
+
+{% endblock %}

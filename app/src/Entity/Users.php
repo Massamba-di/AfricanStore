@@ -59,6 +59,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Adresse::class, mappedBy: 'users')]
     private Collection $adresses;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avatar = null;
+
     #[ORM\Column]
 
 
@@ -252,6 +255,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $adress->setUsers(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

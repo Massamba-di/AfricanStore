@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title %}Paiement reussi!{% endblock %}
+
+{% block body %}
+    <header>
+        {{include('/partials/nav.html.twig')}}
+
+    </header>
+
+<main>
+
+
+<div class="payment">
+    <h1>Paiement réussi !</h1>
+
+    <p>Merci pour votre commande n°{{ command.id }}.</p>
+
+    {% if command.status %}
+        <p>Statut de la commande : {{ command.status }}</p>
+    {% endif %}
+
+    <p>Nous avons bien reçu votre paiement. Votre commande est en cours de traitement.</p>
+
+    <a href="{{ path('app_main') }}">Retour à l'accueil</a>
+
+</div>
+
+</main>
+{% endblock %}

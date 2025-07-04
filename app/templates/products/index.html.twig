@@ -1,89 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductsController!{% endblock %}
+{% block title %}Products index{% endblock %}
 
 {% block body %}
-<header>
-{{include('/partials/nav.html.twig')}}
-</header>
-<main>
-<section class="sect1">
+    <header>
+        {{ include('/partials/nav.html.twig') }}
+    </header>
+
+    <main>
+
+        <section class="sect1">
             <h1>Chaussures</h1>
             <div class="chaussure">
-                <figure data-id="120" data-nom="chaussure de printemps" data-image="{{asset('image/chaussure (2).png')}}" data-description="Sandales Artisanales en Cuir - Style Africain Traditionnel" data-prix="35€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/chaussure (2).png')}}" alt="chaussure"></a>
-                    <figcaption>
-                        <h3>chaussures de printemps</h3>
-                        <p>35€</p>
-                    </figcaption>
-                </figure>
+                {% for product in products %}
+                    {% set is_chaussure = false %}
+                    {% for category in product.categories %}
+                        {% if category.name == 'chaussures' %}
+                            {% set is_chaussure = true %}
+                        {% endif %}
+                    {% endfor %}
 
-                <figure data-id="121" data-nom="chaussure de printemps" data-image="{{asset('image/chaussure (3).png')}}" data-description="Sandales Artisanales en Cuir - Style Africain Traditionnel" data-prix="35€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/chaussure (3).png')}}" alt="chaussure"></a>
-                    <figcaption>
-                        <h3>chaussures de printemps</h3>
-                        <p>35€</p>
-                    </figcaption>
-                </figure>
-
-                <figure data-id="122" data-nom="chaussure de printemps" data-image="{{asset('image/chaussure (4).png')}}" data-description="Sandales Artisanales en Cuir - Style Africain Traditionnel" data-prix="35€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/chaussure (4).png')}}" alt="chaussure"></a>
-                    <figcaption>
-                        <h3>chaussures de printemps</h3>
-                        <p>35€</p>
-                    </figcaption>
-                </figure>
-
-                <figure data-id="123" data-nom="chaussure de printemps" data-image="{{asset('image/chaussure (5).png')}}" data-description="Sandales Artisanales en Cuir - Style Africain Traditionnel" data-prix="35€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/chaussure (5).png')}}" alt="chaussure"></a>
-                    <figcaption>
-                        <h3>chaussures de printemps</h3>
-                        <p>35€</p>
-                    </figcaption>
-                </figure>
+                    {% if is_chaussure %}
+                        <figure
+                                data-id="{{ product.id }}"
+                                data-nom="{{ product.name }}"
+                                data-image="{{ asset('uploads/products/' ~ product.pictures) }}"
+                                data-description="{{ product.description }}"
+                                data-prix="{{ product.price }}"
+                        >
+                            <a href="{{ path('app_descriptions', { id: product.id }) }}">
+                                <img src="{{ asset('uploads/products/' ~ product.pictures) }}" alt="{{ product.name }}">
+                            </a>
+                            <figcaption>
+                                <h3>{{ product.name }}</h3>
+                                <p>{{ product.price }}€</p>
+                            </figcaption>
+                        </figure>
+                    {% endif %}
+                {% endfor %}
             </div>
         </section>
+
+
 
         <section class="sect2">
             <h2>Costumes</h2>
             <div class="costume">
-                <figure data-id="124" data-nom="costume Africain" data-image="{{asset('image/costume 1.jpg')}}" data-description=" une tenue africaine moderne" data-prix="70€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/costume 1.jpg')}}" alt="costume"></a>
-                    <figcaption>
-                        <h3>costume africain</h3>
-                        <p>70€</p>
-                    </figcaption>
-                </figure>
+                {% for product in products %}
+                    {% set is_costume = false %}
+                    {% for category in product.categories %}
+                        {% if category.name == 'costumes' %}
+                            {% set is_costume = true %}
+                        {% endif %}
+                    {% endfor %}
 
-                <figure data-id="125" data-nom="costume Africain" data-image="{{asset('image/costume 2.jpg')}}" data-description=" une tenue africaine moderne" data-prix="70€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/costume 2.jpg')}}" alt="costume"></a>
-                    <figcaption>
-                        <h3>costume africain</h3>
-                        <p>70€</p>
-                    </figcaption>
-                </figure>
-
-                <figure data-id="126" data-nom="costume Africain" data-image="{{asset('image/costume 5.webp')}}" data-description=" une tenue africaine moderne" data-prix="70€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/costume 5.webp')}}" alt="costume"></a>
-                    <figcaption>
-                        <h3>costume africain</h3>
-                        <p>70€</p>
-                    </figcaption>
-                </figure>
-
-                <figure data-id="127" data-nom="costume Africain" data-image="{{asset('image/costume 6.webp')}}" data-description=" une tenue africaine moderne" data-prix="70€">
-                    <a href="{{path('app_descriptions')}}"><img src="{{asset('image/costume 6.webp')}}" alt="costume"></a>
-                    <figcaption>
-                        <h3>costume africain</h3>
-                        <p>70€</p>
-                    </figcaption>
-                </figure>
+                    {% if is_costume %}
+                        <figure
+                                data-id="{{ product.id }}"
+                                data-nom="{{ product.name }}"
+                                data-image="{{ asset('uploads/products/' ~ product.pictures) }}"
+                                data-description="{{ product.description }}"
+                                data-prix="{{ product.price }}"
+                        >
+                            <a href="{{ path('app_descriptions', { id: product.id }) }}">
+                                <img src="{{ asset('uploads/products/' ~ product.pictures) }}" alt="{{ product.name }}">
+                            </a>
+                            <figcaption>
+                                <h3>{{ product.name }}</h3>
+                                <p>{{ product.price }}€</p>
+                            </figcaption>
+                        </figure>
+                    {% endif %}
+                {% endfor %}
             </div>
         </section>
 
-</main>
-{% endblock %}
-{% block javascripts %}
-   
-    <script src="{{ asset('js/products.js') }}"defer></script>
+
+    </main>
+
 {% endblock %}

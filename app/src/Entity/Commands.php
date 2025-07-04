@@ -29,17 +29,24 @@ class Commands
     private ?Users $users = null;
 
     /**
-     * @var Collection<int, Products>
+
      */
-    #[ORM\ManyToMany(targetEntity: Products::class, inversedBy: 'commands')]
-    private Collection $products;
+
 
     #[ORM\ManyToOne(inversedBy: 'commands')]
     private ?Adresse $adresse = null;
 
+    /**
+     * @var Collection<int, CommandProducts>
+     */
+    #[ORM\OneToMany(targetEntity: CommandProducts::class, mappedBy: 'commands')]
+    private Collection $commandProducts;
+
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+
+        $this->order_date = new \DateTime();
+        $this->commandProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,6 +78,7 @@ class Commands
         return $this;
     }
 
+
     public function getTotalPrice(): ?string
     {
         return $this->total_price;
@@ -95,29 +103,7 @@ class Commands
         return $this;
     }
 
-    /**
-     * @return Collection<int, Products>
-     */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
 
-    public function addProduct(Products $product): static
-    {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Products $product): static
-    {
-        $this->products->removeElement($product);
-
-        return $this;
-    }
 
     public function getAdresse(): ?Adresse
     {
@@ -127,6 +113,36 @@ class Commands
     public function setAdresse(?Adresse $adresse): static
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandProducts>
+     */
+    public function getCommandProducts(): Collection
+    {
+        return $this->commandProducts;
+    }
+
+    public function addCommandProduct(CommandProducts $commandProduct): static
+    {
+        if (!$this->commandProducts->contains($commandProduct)) {
+            $this->commandProducts->add($commandProduct);
+            $commandProduct->setCommands($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandProduct(CommandProducts $commandProduct): static
+    {
+        if ($this->commandProducts->removeElement($commandProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($commandProduct->getCommands() === $this) {
+                $commandProduct->setCommands(null);
+            }
+        }
 
         return $this;
     }

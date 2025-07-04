@@ -1,35 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const produitData = JSON.parse(localStorage.getItem("produitselectionne"));
-
-    if (produitData) {
-        document.querySelector("#nom-produit").textContent = produitData.nom;
-        document.querySelector("#image-produit").src = produitData.image;
-        document.querySelector("#image-produit").alt = produitData.nom;
-
-        if (produitData.description) {
-            document.querySelector("#description-produit").textContent = produitData.description;
-        }
-        if (produitData.prix) {
-            document.querySelector("#prix-produit").textContent = produitData.prix;
-        }
-
-        const button = document.querySelector(".btnAjout");
+const button = document.querySelector(".btnAjout");
         if (button) {
             button.addEventListener('click', function (event) {
-                event.preventDefault(); 
+                event.preventDefault();
                 let panier = JSON.parse(localStorage.getItem("panier")) || [];
 
                 const produitAjoute = {
-                    id: Date.now(),
-                    nom: produitData.nom,
-                    image: produitData.image,
-                    prix: produitData.prix,
-                    quantity: 1
+                    id: parseInt(this.dataset.id),
+                    nom: document.getElementById('nom-produit').textContent,
+                    image: document.getElementById('image-produit').getAttribute('src'),
+                    prix: parseFloat(document.getElementById('prix-produit').textContent),
+                    description: document.getElementById('description-produit').textContent,
+                    quantity: 1,
+
                 };
 
-                if (produitData.description) {
-                    produitAjoute.description = produitData.description;
-                }
+
 
                 const tailleSelectionnee = document.querySelector('input[name="taille"]:checked');
                 if (tailleSelectionnee) {
@@ -42,13 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert('Produit ajouté au panier !');
 
            const url = this.dataset.cartUrl;
-          console.log("Redirection vers :", url); 
+          console.log("Redirection vers :", url);
           window.location.href = url;
 
 
             });
-        }
+
     } else {
         document.body.innerHTML = "<p>Aucun produit trouvé.</p>";
     }
-});
+

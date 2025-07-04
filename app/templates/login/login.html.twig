@@ -43,9 +43,12 @@
         #}
 
         <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
+           connecter
         </button>
+        <div class="logLink">
+            <a href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a> <br>
+            <span>Pas encore inscrit(e):</span> <a href="{{ path('app_register') }}">s'inscrire</a>
+        </div>
     </form>
-    <a href="{{ path('app_forgot_password_request') }}">mot de passe oublié</a> <br>
-    <span>Pas encore inscrit(e):</span> <a href="{{ path('app_register') }}">s'inscrire</a>
+
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products{% endblock %}
+
+{% block body %}
+    <img src="/uploads/products/{{ product.pictures }}" alt="{{ product.name }}" >
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+
+
+
+
+
+
+
+{% endblock %}

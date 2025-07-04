@@ -25,19 +25,19 @@ final class CommandsController extends AbstractController
     #[Route('/paiement', name: 'app_commands_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $command = new Commands();
-        $form = $this->createForm(CommandsForm::class, $command);
+
+        $form = $this->createForm( CommandsForm::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($command);
+            $entityManager->persist();
             $entityManager->flush();
 
             return $this->redirectToRoute('app_commands_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('commands/new.html.twig', [
-            'command' => $command,
+
             'form' => $form,
         ]);
     }

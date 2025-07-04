@@ -8,53 +8,88 @@
 		{{include('/partials/nav.html.twig')}}
 	</header>
 	<main>
-		<section class="sect1">
-        <h1>Description du produit</h1>
+        <section class="sect1">
+            <h1>Description du produit</h1>
             <div class="description">
-            <figure class="description">
-            <img id="image-produit" src="" alt="">
-            <figcaption>
-                <h2 id="nom-produit"></h2>
-                <p><span id="prix-produit">--</span></p>
-                  <p id="description-produit"></p>
-                
-            </figcaption>
-        </figure>
-        <p id="description-produit"></p>
+                <figure class="description">
+                    <img id="image-produit" src="{{ asset('uploads/products/' ~ product.pictures) }}" alt="{{ product.name }}">
+                    <figcaption>
+                        <h2 id="nom-produit">{{ product.name }}</h2>
+                        <p><span id="prix-produit">{{ product.price }} €</span></p>
+                        <p id="description-produit">{{ product.description }}</p>
+                    </figcaption>
+                </figure>
             </div>
-        
-    </section>
+        </section>
+        <section class="sect2">
+            <form id="formPanier">
+                <div class="taille">
+                    <div>
+                        <label for="S">S</label>
+                        <input type="radio" id="S" name="taille">
+                    </div>
+                    <div>
+                        <label for="M">M</label>
+                        <input type="radio" id="M" name="taille">
+                    </div>
+                    <div>
+                        <label for="L">L</label>
+                        <input type="radio" id="L" name="taille">
+                    </div>
+                    <div>
+                        <label for="XL">XL</label>
+                        <input type="radio" id="XL" name="taille">
+                    </div>
+                </div>
 
-    <section class="sect2">
-        <form id="formPanier">
-            <div class="taille">
-                <div>
-                    <label for="S">S</label>
-                    <input type="radio" id="S" name="taille">
-                </div>
-                <div>
-                    <label for="M">M</label>
-                    <input type="radio" id="M" name="taille">
-                </div>
-                <div>
-                    <label for="L">L</label>
-                    <input type="radio" id="L" name="taille">
-                </div>
-                <div>
-                    <label for="XL">XL</label>
-                    <input type="radio" id="XL" name="taille">
-                </div>
-            </div>
+                <!-- Dans le fichier .twig -->
+                <button class="btnAjout" data-id="{{ product.id }}" data-cart-url="{{ path('app_cart') }}">Ajouter au panier</button>
 
-           <!-- Dans le fichier .twig -->
-<button class="btnAjout" data-cart-url="{{ path('app_cart') }}">Ajouter au panier</button>
 
-        </form>
-    </section>.
+            </form>
+        </section>
+        <section class="sect2">
+            <h2>Avis :</h2>
+            {% for review in reviews %}
+                <div>
+                    <strong>{{ review.user.email }}</strong> - {{ review.rating }}/5
+                    <p>{{ review.comment }}</p>
+
+                </div>
+            {% else %}
+                <p>Aucun avis pour ce produit.</p>
+            {% endfor %}
+
+            {% if app.user %}
+
+                <h2>Laisser un avis</h2>
+                {{ form_start(form,{ attr: { class: 'reviews' } })  }}
+                <div>
+                    {{ form_row(form.comment) }}
+                </div>
+                <div class="stars">
+                    {{ form_widget(form.rating) }}
+                </div>
+
+
+
+                <button class="btnReviews">Envoyer</button>
+                {{ form_end(form) }}
+            {% else %}
+                <p><a href="{{ path('app_login') }}">Connectez-vous</a> pour laisser un avis.</p>
+            {% endif %}
+
+        </section>
+
+
+
+
+
+
 			</main>
 		{% endblock %}
 		{% block javascripts %}
 
-			<script src="{{ asset('js/description.js') }}" defer></script>
+            <script src="{{ asset('js/description.js') }}" defer></script>
       
 		{% endblock %}

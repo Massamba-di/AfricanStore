@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CommandProducts{% endblock %}
+
+{% block body %}
+    <h1>Create new CommandProducts</h1>
+
+    {{ include('command_products/_form.html.twig') }}
+
+    <a href="{{ path('app_command_products_index') }}">back to list</a>
+{% endblock %}

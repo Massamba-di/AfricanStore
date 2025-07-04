@@ -30,7 +30,7 @@ class ProductsForm extends AbstractType
             ->add('pictures',FileType::class,[
                 'label' => 'Image du produit',
                 'mapped' => false,
-                 'constraints' => [
+                'constraints' => [
                     new Image(
                         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
                         mimeTypesMessage: 'seuls les formats jpeg, png et webp sont autorisés',
@@ -40,19 +40,15 @@ class ProductsForm extends AbstractType
             ])
             ->add('size')
             #->add('commands', EntityType::class, [
-               # 'class' => Commands::class,
-                #'choice_label' => 'name',
-                #'multiple' => true,
-           # ])
-          ->add('categories', EntityType::class, [
-              'class' => Categories::class,
-              'choice_label' => 'name',
-              'placeholder' => 'Choisis-une-catégorie',
-
-              'multiple' => true,
-              'expanded' => false,
-          ])
-
+            # 'class' => Commands::class,
+            #'choice_label' => 'name',
+            #'multiple' => true,
+            # ])
+            ->add('categories', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+            ])
             ->add('ajouter',SubmitType::class)
         ;
     }
