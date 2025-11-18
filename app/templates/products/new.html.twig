@@ -11,7 +11,7 @@
 
     <h1>Ajouter produit</h1>
 
-    {{ form_start(form,c}) }}
+    {{ form_start(form,{ attr: { class: 'formulaire' } }) }}
     <div>
         {{ form_row(form.name) }}
     </div>

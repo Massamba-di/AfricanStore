@@ -162,6 +162,17 @@ main {
     padding: 10px;
     margin-block:  15px;
 }
+/*flash*/
+.flash{
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    margin: 15px auto;
+    border-radius: 5px;
+    color:black
+
+}
 
 /*panier*/
 #panier-container {
@@ -218,7 +229,7 @@ main {
          margin:auto;
    }
 
-          .formulaire input,textarea:not([type=checkbox])
+          .formulaire input,textarea,select:not([type=checkbox])
                   {
                      width: 100%;
                      margin-bottom: 10px;
@@ -297,7 +308,10 @@ details{
         padding: 10px 20px;
 
 }
-
+.logLink{
+    display: flex;
+    -webkit-justify-content: space-between;
+}
 
 
   .logLink  a{
@@ -394,7 +408,7 @@ details{
 @media screen and (min-width: 1024px) {
     .second {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
 
     }
 
@@ -403,6 +417,14 @@ details{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 10px;
+
+    }
+    .welcome img{
+        max-height: 50vh;
+
+        width: 100%;
+
+
 
     }
 

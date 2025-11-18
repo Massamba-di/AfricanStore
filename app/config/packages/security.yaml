@@ -48,6 +48,10 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/products/new, roles: ROLE_ADMIN }
+         - { path: ^/products/\d+/edit, roles: ROLE_ADMIN }
+         - { path: ^/products/\d+/delete, roles: ROLE_ADMIN }
+         - { path: ^/categories, roles: ROLE_ADMIN }
 
 when@test:
     security:
